@@ -1,0 +1,9 @@
+django
+django-redis
+djangorestframework
+channels
+channels-redis
+redis
+psycopg2-binary
+djangorestframework-simplejwt
+Pillow
