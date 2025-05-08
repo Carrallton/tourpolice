@@ -1,6 +1,6 @@
 from rest_framework import viewsets, generics, permissions
 from .models import News, EmergencyRequest
-from .serializers import NewsSerializer, EmergencyRequestSerializer, UserSerializer
+from .serializers import NewsSerializer, EmergencyRequestSerializer
 from rest_framework.permissions import IsAuthenticated
 
 class NewsViewSet(viewsets.ModelViewSet):
@@ -8,7 +8,7 @@ class NewsViewSet(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
     permission_classes = [IsAuthenticated]
 
-class EmergencyCreate(generics.CreateAPIView):
+class EmergencyViewSet(viewsets.ModelViewSet):
     queryset = EmergencyRequest.objects.all()
     serializer_class = EmergencyRequestSerializer
     permission_classes = [permissions.IsAuthenticated]
