@@ -5,7 +5,7 @@ import os
 env = environ.Env(
     DEBUG=(bool, False),
     SECRET_KEY=(str, 'django-insecure-f-f=no886m43ygt6!i23zhx9u&3fy^=$ch^9rw=@l)a#mv3+b7'),
-    ALLOWED_HOSTS=(list, ['213.109.202.70', '172.23.0.2', 'localhost', '127.0.0.1', '*']),
+    ALLOWED_HOSTS=(list, ['213.109.202.70', '172.23.0.2', 'localhost', '127.0.0.1', 'brnt1appt.ru']),
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,23 +75,23 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 #DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'appdb',         # Имя базы данных
-#        'USER': 'deployuser',         # Имя пользователя
-#        'PASSWORD': '#ton#392194KLD', # Пароль
-#        'HOST': 'localhost',            # Хост базы данных
-#        'PORT': '5432',                 # Порт (по умолчанию 5432)
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'appdb',         # Имя базы данных
+        'USER': 'deployuser',         # Имя пользователя
+        'PASSWORD': '#ton#392194KLD', # Пароль
+        'HOST': 'localhost',            # Хост базы данных
+        'PORT': '5432',                 # Порт (по умолчанию 5432)
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
