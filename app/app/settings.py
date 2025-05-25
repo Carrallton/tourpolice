@@ -3,7 +3,7 @@ import environ
 import os
 
 env = environ.Env(
-    DEBUG=(bool, False),
+    DEBUG=(bool, True),
     SECRET_KEY=(str, 'django-insecure-f-f=no886m43ygt6!i23zhx9u&3fy^=$ch^9rw=@l)a#mv3+b7'),
     ALLOWED_HOSTS=(list, ['213.109.202.70', '172.23.0.2', 'localhost', '127.0.0.1', 'brnt1appt.ru']),
 )
