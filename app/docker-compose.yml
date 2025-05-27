@@ -17,7 +17,7 @@ services:
     environment:
       POSTGRES_DB: appdb
       POSTGRES_USER: deployuser
-      POSTGRES_PASSWORD: #ton#392194KLD
+      POSTGRES_PASSWORD: ton392194KLD
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

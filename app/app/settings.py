@@ -71,6 +71,10 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+USE_X_FORWARDED_HOST = True
+
 CSRF_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_SAMESITE = 'Lax'
 
@@ -139,8 +143,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'appdb',         # Имя базы данных
         'USER': 'deployuser',         # Имя пользователя
-        'PASSWORD': '#ton#392194KLD', # Пароль
-        'HOST': 'localhost',            # Хост базы данных
+        'PASSWORD': 'ton392194KLD', # Пароль
+        'HOST': 'db',            # Хост базы данных
         'PORT': '5432',                 # Порт (по умолчанию 5432)
     }
 }
