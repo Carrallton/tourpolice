@@ -24,3 +24,5 @@ migrations
 *db.sqlite3
 *.log
 app/debug.log
+env/
+app/debug.log
