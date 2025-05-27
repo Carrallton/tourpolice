@@ -1,21 +1,13 @@
 from pathlib import Path
-import environ
 import os
-
-env = environ.Env(
-    DEBUG=(bool, False),
-    SECRET_KEY=(str, 'django-insecure-f-f=no886m43ygt6!i23zhx9u&3fy^=$ch^9rw=@l)a#mv3+b7'),
-    ALLOWED_HOSTS=(list, ['213.109.202.70', '172.23.0.2', 'localhost', '127.0.0.1', 'brnt1appt.ru','www.brnt1appt.ru',]),
-)
+from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+SECRET_KEY = 'django-insecure-f-f=no886m43ygt6!i23zhx9u&3fy^=$ch^9rw=@l)a#mv3+b7'
+DEBUG = False
 
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ['213.109.202.70', '172.23.0.2', 'localhost', '127.0.0.1', 'brnt1appt.ru','www.brnt1appt.ru',]
 
 # Application definition
 
@@ -27,8 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
     'rest_framework_simplejwt',
+    'corsheaders',
     'channels',
     'api',
     'accounts',
@@ -53,7 +45,57 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_ALL_ORIGINS = False
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+}
 
 ROOT_URLCONF = 'app.urls'
 
